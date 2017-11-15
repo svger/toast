@@ -1,23 +1,19 @@
 import React from 'react';
 import Toast from '../src/Toast';
 import Button from '@cefc-ui/button'
+import Icon from '@cefc-ui/icon'
 
 class App extends React.Component {
 
-    componentDidMount() {
-        console.log('APP componentDidUpdate')
-        Toast.success (<span> 123 </span>);
-    }
-
     showToast = () => {
-        Toast.success (<span> 123 </span>);
+        Toast.success (<div><Icon type="reload" inline className='bfd-message'/><span style={{'verticalAlign': 'super'}}>loading</span></div>);
     }
 
     render() {
 
       return (
         <div>
-             <Button color="blue" block radius onClick={this.showToast} text="SHow Toast"/>
+             <Button color="blue" block radius onClick={this.showToast} text="Show Toast"/>
         </div>
     );
   }

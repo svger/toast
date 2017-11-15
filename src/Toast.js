@@ -3,7 +3,6 @@ import React, { PropTypes, Component } from 'react'
 import ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import Button from '@cefc-ui/button'
-import Icon from '@cefc-ui/icon'
 import createCSSModules from 'react-css-modules';
 
 class Message extends Component {
@@ -13,7 +12,7 @@ class Message extends Component {
         this.state = {
             open: false
         }
-        this.prepareClose(props)
+        this.prepareClose(props);
     }
 
     componentDidMount() {
@@ -46,7 +45,6 @@ class Message extends Component {
 
         return (
             <div styleName={classnames('bfd-message', {[`bfd-message--${type}`]: type})} style={{'opacity': opacity}}>
-                <Icon type="reload" inline/>
                 {message}
                 {duration === 0 && (
                     <Button styleName="bfd-message__remove" color="blue" block radius onClick={::this.handleClose}>Button</Button>
