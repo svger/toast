@@ -11,12 +11,14 @@ class Message extends Component {
         super();
         this.state = {
             open: false
-        }
+        };
         this.prepareClose(props);
     }
 
     componentDidMount() {
         this.handleOpen();
+        window.addEventListener('scroll', this.handleTouchEvent);
+        // window.addEventListener('click', this.handleTouchEvent);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -24,10 +26,24 @@ class Message extends Component {
         this.prepareClose(nextProps)
     }
 
+    componentWillUnmount () {
+        window.removeEventListener('scroll', this.handleScroll);
+        // window.removeEventListener('click', this.handleScroll);
+    }
+
     prepareClose(props) {
         const { duration } = props;
         duration && setTimeout(::this.handleClose, duration * 1000)
     }
+
+    handleTouchEvent = () => {
+        let { open } = this.state;
+
+        if (open) {
+            this.setState({open: false});
+            this.props.onClose && this.props.onClose();
+        }
+    };
 
     handleClose() {
         this.setState({open: false});
@@ -56,7 +72,10 @@ class Message extends Component {
 
 Message.propTypes = {
     type: PropTypes.oneOf(['success', 'danger']).isRequired,
-    message: PropTypes.node.isRequired,
+    message: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
     duration: PropTypes.number,
     onClose: PropTypes.func,
     open: PropTypes.bool
@@ -66,7 +85,6 @@ Message.propTypes = {
 let MeaasgeModule = createCSSModules(Message, styles, {
     allowMultiple: true
 });
-
 
 let render = props => {
     const container = document.createElement('div');

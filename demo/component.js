@@ -12,7 +12,7 @@ class App extends React.Component {
     render() {
 
       return (
-        <div>
+        <div style={{'height': '800px'}}>
              <Button color="blue" block radius onClick={this.showToast} text="Show Toast"/>
         </div>
     );
