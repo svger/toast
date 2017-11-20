@@ -57,7 +57,7 @@ class Message extends Component {
     render() {
         const { type, message, duration } = this.props;
         const { open } = this.state;
-        let opacity = open ? '1' : '0';
+        let opacity = open ? '0.5' : '0';
 
         return (
             <div styleName={classnames('bfd-message', {[`bfd-message--${type}`]: type})} style={{'opacity': opacity}}>
