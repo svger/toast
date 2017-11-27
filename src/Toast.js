@@ -3,7 +3,6 @@ import React, { PropTypes, Component } from 'react'
 import ReactDOM from 'react-dom'
 import classnames from 'classnames'
 import Button from '@cefc-ui/button'
-import createCSSModules from 'react-css-modules';
 
 class Message extends Component {
 
@@ -27,7 +26,7 @@ class Message extends Component {
     }
 
     componentWillUnmount () {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleTouchEvent);
         // window.removeEventListener('click', this.handleScroll);
     }
 
@@ -60,10 +59,10 @@ class Message extends Component {
         let opacity = open ? '0.5' : '0';
 
         return (
-            <div styleName={classnames('bfd-message', {[`bfd-message--${type}`]: type})} style={{'opacity': opacity}}>
+            <div className={classnames('bfd-message', {[`bfd-message--${type}`]: type})} style={{'opacity': opacity}}>
                 {message}
                 {duration === 0 && (
-                    <Button styleName="bfd-message__remove" color="blue" block radius onClick={::this.handleClose}>Button</Button>
+                    <Button className="bfd-message__remove" color="blue" block radius onClick={::this.handleClose}>Button</Button>
                 )}
             </div>
         )
@@ -80,11 +79,6 @@ Message.propTypes = {
     onClose: PropTypes.func,
     open: PropTypes.bool
 }
-
-
-let MeaasgeModule = createCSSModules(Message, styles, {
-    allowMultiple: true
-});
 
 let render = props => {
     const container = document.createElement('div');
@@ -104,7 +98,7 @@ let render = props => {
             return messageQueue.push(props);
         }
         isOpen = props.open;
-        ReactDOM.render(<MeaasgeModule {...props} onClose={handleClose} />, container);
+        ReactDOM.render(<Message {...props} onClose={handleClose} />, container);
         props.open || handleClose()
     }
     render()
