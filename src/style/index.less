@@ -1,3 +1,5 @@
+@import '../../node_modules/cefc-ui-style/src/mixins/utils.less';
+@import '../../@{theme}';
 @primary-color-light: #cfeeff;
 @primary-color: #27b3fe;
 @primary-color-deep: #19afff;
@@ -5,6 +7,7 @@
 @success-color: #4cd964;
 @danger-color: #f94242;
 @body-bg-color-black: #000000;
+@toastPrefixCls: cefc-toast;
 
 .bfd-message {
   position: fixed;
@@ -29,7 +32,7 @@
 }
 
 .bfd-message--open {
-  opacity: 1;
+  opacity: @opacity-disabled;
   transform: translate(-50%, 0);
 }
 
