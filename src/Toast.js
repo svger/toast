@@ -61,9 +61,7 @@ class Message extends Component {
           [`${defaultPrefixCls}--${type}`]: type
         })} style={{ opacity: opacity }}>
         {message}
-        {duration === 0 && <button className={`${defaultPrefixCls}__remove`} onClick={this.handleClose}>
-            Show Toast
-          </button>}
+        {duration === 0 && <button className={`${defaultPrefixCls}__remove`} onClick={this.handleClose}></button>}
       </div>;
   }
 }

@@ -1,46 +1,38 @@
-@import '../../node_modules/cefc-ui-style/src/mixins/utils.less';
-@import '../../@{theme}';
-@primary-color-light: #cfeeff;
-@primary-color: #27b3fe;
-@primary-color-deep: #19afff;
-@primary-color-deeper: #00a6ff;
-@success-color: #4cd964;
-@danger-color: #f94242;
-@body-bg-color-black: #000000;
+@import "../../node_modules/cefc-ui-style/src/mixins/utils.less";
+@import "../../@{theme}";
 @toastPrefixCls: cefc-toast;
 
 .@{toastPrefixCls} {
   position: fixed;
   z-index: 9999;
-  min-width: 200px;
-  max-width: 400px;
+  min-width: 2rem;
+  max-width: 4rem;
   left: 50%;
   top: 50%;
-  padding: 30px 50px;
-  padding-left: 80px;
+  padding: @v-spacing-xl @h-spacing-lg;
   border-radius: 2px;
   border: 1px solid transparent;
   word-wrap: break-word;
-  font-size: 14px;
-  background-color: @body-bg-color-black;
+  font-size: @font-size-base;
+  background-color: @fill-grey;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   transform: translate(-50%, -50%);
   transition: opacity 0.3s, transform 0.15s;
   opacity: 0;
   text-align: center;
-  color: white;
+  color: @color-text-paragraph;
 }
 
 .@{toastPrefixCls}--open {
-  opacity: 0.3;
+  opacity: @opacity-disabled;
   transform: translate(-50%, 0);
 }
 
 .@{toastPrefixCls}__symbol {
   position: absolute;
-  left: 30px;
+  left: 0.3rem;
   top: 50%;
-  font-size: 30px;
+  font-size: 0.3rem;
   transform: translateY(-50%);
 }
 
@@ -48,20 +40,33 @@
   position: absolute;
   top: 0;
   right: 0;
+  height: @icon-size-xxs;
+  width: @icon-size-xxs;
+  background: @fill-grey url(Snip20171128_1.png) no-repeat center center;
 }
 
 .@{toastPrefixCls}--success {
   .@{toastPrefixCls}__symbol {
-    color: @success-color;
+    color: @brand-success;
   }
 }
 
 .@{toastPrefixCls}--danger {
   .@{toastPrefixCls}__symbol {
-    color: @danger-color;
+    color: @brand-error;
   }
 }
 
-.bfd-button {
-  background-color: blue;
+.cefc-button {
+  background-color: @brand-wait;
+  width: 100%;
+  height: 0.44rem;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  line-height: inherit;
+  text-align: center;
+  border: 0;
+  border-radius: 0.05rem;
+  color: @color-text-base-inverse;
 }
