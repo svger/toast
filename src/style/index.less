@@ -1,5 +1,3 @@
-@import '../../node_modules/cefc-ui-style/src/mixins/utils.less';
-@import '../../@{theme}';
 @primary-color-light: #cfeeff;
 @primary-color: #27b3fe;
 @primary-color-deep: #19afff;
@@ -17,22 +15,22 @@
   left: 50%;
   top: 50%;
   padding: 30px 50px;
-  //padding-left: 80px;
+  padding-left: 80px;
   border-radius: 2px;
   border: 1px solid transparent;
   word-wrap: break-word;
   font-size: 14px;
   background-color: @body-bg-color-black;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, .2);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   transform: translate(-50%, -50%);
-  transition: opacity .3s, transform .15s;
+  transition: opacity 0.3s, transform 0.15s;
   opacity: 0;
   text-align: center;
   color: white;
 }
 
 .bfd-message--open {
-  opacity: @opacity-disabled;
+  opacity: 0.3;
   transform: translate(-50%, 0);
 }
 
@@ -42,7 +40,6 @@
   top: 50%;
   font-size: 30px;
   transform: translateY(-50%);
-
 }
 
 .bfd-message__remove {
@@ -61,4 +58,8 @@
   .bfd-message__symbol {
     color: @danger-color;
   }
+}
+
+.bfd-button {
+  background-color: blue;
 }

@@ -2,7 +2,6 @@ import styles from './style/index.less'
 import React, { PropTypes, Component } from 'react'
 import ReactDOM from 'react-dom'
 import classnames from 'classnames'
-import Button from '@cefc-ui/button'
 
 class Message extends Component {
 
@@ -32,7 +31,7 @@ class Message extends Component {
 
     prepareClose(props) {
         const { duration } = props;
-        duration && setTimeout(::this.handleClose, duration * 1000)
+        duration && setTimeout(this.handleClose, duration * 1000)
     }
 
     handleTouchEvent = () => {
@@ -44,12 +43,12 @@ class Message extends Component {
         }
     };
 
-    handleClose() {
+    handleClose = () => {
         this.setState({open: false});
         this.props.onClose && this.props.onClose();
     }
 
-    handleOpen() {
+    handleOpen = () => {
         this.setState({open: true});
     }
 
@@ -62,7 +61,9 @@ class Message extends Component {
             <div className={classnames('bfd-message', {[`bfd-message--${type}`]: type})} style={{'opacity': opacity}}>
                 {message}
                 {duration === 0 && (
-                    <Button className="bfd-message__remove" color="blue" block radius onClick={::this.handleClose}>Button</Button>
+                    <button className="bfd-message__remove"  onClick={this.handleClose}>
+                      Show Toast
+                    </button>
                 )}
             </div>
         )
