@@ -1,3 +1,5 @@
+@import '../../node_modules/cefc-ui-style/src/mixins/utils.less';
+@import '../../@{theme}';
 @primary-color-light: #cfeeff;
 @primary-color: #27b3fe;
 @primary-color-deep: #19afff;
@@ -7,7 +9,7 @@
 @body-bg-color-black: #000000;
 @toastPrefixCls: cefc-toast;
 
-.bfd-message {
+.@{toastPrefixCls} {
   position: fixed;
   z-index: 9999;
   min-width: 200px;
@@ -29,12 +31,12 @@
   color: white;
 }
 
-.bfd-message--open {
+.@{toastPrefixCls}--open {
   opacity: 0.3;
   transform: translate(-50%, 0);
 }
 
-.bfd-message__symbol {
+.@{toastPrefixCls}__symbol {
   position: absolute;
   left: 30px;
   top: 50%;
@@ -42,20 +44,20 @@
   transform: translateY(-50%);
 }
 
-.bfd-message__remove {
+.@{toastPrefixCls}__remove {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.bfd-message--success {
-  .bfd-message__symbol {
+.@{toastPrefixCls}--success {
+  .@{toastPrefixCls}__symbol {
     color: @success-color;
   }
 }
 
-.bfd-message--danger {
-  .bfd-message__symbol {
+.@{toastPrefixCls}--danger {
+  .@{toastPrefixCls}__symbol {
     color: @danger-color;
   }
 }
