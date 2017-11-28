@@ -3,6 +3,8 @@ import React, { PropTypes, Component } from "react";
 import ReactDOM from "react-dom";
 import classnames from "classnames";
 const defaultPrefixCls = "cefc-toast";
+const showToast = '0.3';
+const hiddenToast = '0';
 
 class Message extends Component {
   constructor(props) {
@@ -16,7 +18,6 @@ class Message extends Component {
   componentDidMount() {
     this.handleOpen();
     window.addEventListener("scroll", this.handleTouchEvent);
-    // window.addEventListener('click', this.handleTouchEvent);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,7 +27,6 @@ class Message extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleTouchEvent);
-    // window.removeEventListener('click', this.handleScroll);
   }
 
   prepareClose(props) {
@@ -53,15 +53,15 @@ class Message extends Component {
   };
 
   render() {
-    const { type, message, duration } = this.props;
+    const { type, message, duration, prefixCls } = this.props;
     const { open } = this.state;
-    let opacity = open ? "0.5" : "0";
-
-    return <div className={classnames(defaultPrefixCls, {
-          [`${defaultPrefixCls}--${type}`]: type
+    let opacity = open ? showToast : hiddenToast;
+ 
+    return <div className={classnames(prefixCls, {
+          [`${prefixCls}--${type}`]: type
         })} style={{ opacity: opacity }}>
         {message}
-        {duration === 0 && <button className={`${defaultPrefixCls}__remove`} onClick={this.handleClose}></button>}
+        {duration === 0 && <button className={`${prefixCls}__remove`} onClick={this.handleClose} />}
       </div>;
   }
 }
@@ -86,7 +86,7 @@ let render = props => {
     const head = messageQueue[0] && messageQueue.shift();
     head && render(head);
   };
-
+ 
   render = nextProps => {
     props = Object.assign({}, props, nextProps);
     if (isOpen && props.open) {
@@ -107,13 +107,8 @@ const message = {
    * @param  {number} [duration] 持续时间，单位秒，为0时手动关闭
    * @description 成功信息，默认 2 秒后自动关闭
    */
-  success(message, duration = 2) {
-    render({
-      message,
-      duration,
-      type: "success",
-      open: true
-    });
+  success(message, duration = 2, prefixCls = defaultPrefixCls) {
+    render({ message, duration, type: "success", open: true, prefixCls });
   },
 
   /**
@@ -123,13 +118,8 @@ const message = {
    * @param  {number} [duration] 持续时间，单位秒，为0时手动关闭
    * @description 失败信息，默认 3 秒后自动关闭
    */
-  danger(message, duration = 3) {
-    render({
-      message,
-      duration,
-      type: "danger",
-      open: true
-    });
+  danger(message, duration = 3, prefixCls = defaultPrefixCls) {
+    render({ message, duration, type: "danger", open: true, prefixCls });
   },
 
   /**
