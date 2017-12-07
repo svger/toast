@@ -1,6 +1,7 @@
 import styles from "./style/index.less";
-import React, { PropTypes, Component } from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import classnames from "classnames";
 const defaultPrefixCls = "cefc-toast";
 const showToast = '0.3';

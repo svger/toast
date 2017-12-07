@@ -5,17 +5,12 @@
 
 ### Toast
 
-| 属性        | 说明                          | 类型            | 默认值         |
-| --------- | --------------------------- | ------------- | ----------- |
-| prefixCls | 样式前缀，如：`cefc-cell`，可用于自定义样式 | String        | `cefc-cell` |
-| children  | 子元素                         | React.Element | 无           |
-
-
 
 ### Toast.success
 
 | 属性        | 说明                          | 类型            | 默认值         |
 | --------- | --------------------------- | ------------- | ----------- |
+| prefixCls | 样式前缀，如：`cefc-toast`，可用于自定义样式 | String        | `cefc-toast` |
 | message | 需要的展示内容，支持 React 元素 | React.Element/String        | `必传` |
 | duration  | 展示在界面里的时间，传0时右上角出现关闭按钮需要手动关闭Toast                         | Number |   `2`         |
 
@@ -25,6 +20,7 @@
 
 | 属性        | 说明                          | 类型            | 默认值         |
 | --------- | --------------------------- | ------------- | ----------- |
+| prefixCls | 样式前缀，如：`cefc-toast`，可用于自定义样式 | String        | `cefc-toast` |
 | message | 需要的展示内容，支持 React 元素 | React.Element/String        | `必传` |
 | duration  | 展示在界面里的时间，传0时右上角出现关闭按钮需要手动关闭Toast                         | Number |   `3`         |
 
